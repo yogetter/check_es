@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
                 string status[] = {"\"status\":\"green\"", "\"status\":\"yellow\"", "\"status\":\"red\""};
                 if( readBuffer.find(status[2]) != string::npos || node_num <= critical){
 			cout << "elasticsearch CRITICAL: " << node_num << " elasticsearch nodes are running" << endl;
-			return 0; 
+			return 2; 
 		}
 		else if ( readBuffer.find(status[1]) != string::npos || node_num <= warn ){
 		        cout << "elasticsearch WARNING: " << node_num << " elasticsearch nodes are running" << endl;
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 		}
 		else if( readBuffer.find(status[0]) != string::npos || node_num > warn ){
                         cout << "elasticsearch OK: " << node_num << " elasticsearch nodes are running" << endl;
-			return 2;
+			return 0;
 		}
 		else{
                         cout << "elasticsearch UNKNOWN: " << node_num <<" elasticsearch nodes are running" << endl;
